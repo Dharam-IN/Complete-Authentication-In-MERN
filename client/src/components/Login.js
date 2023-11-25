@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import './mix.css'
 
 
@@ -29,7 +30,7 @@ const Login = ()=>{
                             </div>
                         </div>
                         <button className="btn">Login</button>
-                        <p>Don't Have Account? <a href="/">Sign Up</a></p>
+                        <p>Don't Have Account? <NavLink to="/register">Sign Up</NavLink></p>
                     </form>
                 </div>
             </section>
