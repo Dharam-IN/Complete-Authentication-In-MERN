@@ -26,7 +26,16 @@ const Login = ()=>{
     const loginuser =(e)=>{
         e.preventDefault();
         const {email, password} = inpval
-        console.log(email, password)
+        if(email === ""){
+            alert("Please enter Email")
+        }else if(password === ""){
+            alert("Please enter Password")
+        }else if(password.length < 6){
+            alert("Atleast password length is 6 Character")
+        }
+        else{
+            console.log("Login Successfully")
+        }
     }
 
     return(
