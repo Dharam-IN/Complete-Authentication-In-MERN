@@ -2,7 +2,7 @@ const { default: mongoose } = require('mongoose')
 const mongoose = require('mongoose')
 const validator = require("validator")
 
-const mongoose = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     fname:{
         type: String,
         required: true,
@@ -37,3 +37,9 @@ const mongoose = new mongoose.Schema({
         }
     ]
 })
+
+// Creating model
+
+var userdb = new mongoose.model("users", userSchema);
+
+module.exports = userdb;

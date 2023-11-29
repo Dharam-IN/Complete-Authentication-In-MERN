@@ -27,7 +27,7 @@ const Register = ()=>{
         })
     }
 
-    const addUserdata = (e)=>{
+    const addUserdata = async (e)=>{
         e.preventDefault();
         const {fname, email, password, cpassword} = inpval;
         
@@ -48,9 +48,21 @@ const Register = ()=>{
             alert("Password and Confirm password are not match")
         }
         else{
-            console.log("User Registered Successfully")
+            // console.log("User Registered Successfully")
+            const data = await fetch("http://localhost:8009/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    fname, email, password, cpassword
+                })
+            })
+            const res = await data.json();
+            console.log(res)
         }
     }
+
 
     return(
         <>
