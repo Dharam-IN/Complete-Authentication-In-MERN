@@ -18,6 +18,10 @@ router.post('/register', async(req, res)=>{
             res.status(422).json({error: "This Email Already Exist"})
         }else if(password !== cpassword){
             res.status(422).json({error: "Password and Confirm Password Not Match"})
+        }else{
+            const finaluser = new userdb({
+                fname, email, password, cpassword
+            })
         }
     } catch (error) {
         
