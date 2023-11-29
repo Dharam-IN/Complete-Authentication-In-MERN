@@ -49,17 +49,17 @@ const Register = ()=>{
         }
         else{
             // console.log("User Registered Successfully")
-            const data = await fetch("http://localhost:8009/register", {
+            const data = await fetch("http://localhost:8009/register",{
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
+                headers:{
+                        "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     fname, email, password, cpassword
                 })
             })
             const res = await data.json();
-            console.log(res)
+            // console.log(res)
         }
     }
 
