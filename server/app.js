@@ -4,6 +4,7 @@ require("./db/conn.js")
 const router = require('./routes/router')
 const cors = require("cors")
 const port = 8009;
+require("./models/userSchema.js")
 
 
 // app.get("/", (req, res)=>{

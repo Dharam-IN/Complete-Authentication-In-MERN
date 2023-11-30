@@ -40,7 +40,6 @@ router.post('/register', async(req, res)=>{
 
 
 
-
 // User Login 
 
 router.post("/login", async (req,res)=>{
@@ -60,13 +59,22 @@ router.post("/login", async (req,res)=>{
             if(!isMatch){
                 res.status(422).json({error: "Invalid Details"})
             }else{
-                
+                // token generate
+
+                const token = await userValid.generateAuthtoken();
+                // console.log(token)
+
+                // cookiegenerate
+
+                res.cookie("usercookie", token,{
+                    expires: new Date(Date.now()+9000000)
+                })
             }
         }
     } catch (error) {
-        
+        res.status(422).json(error)
     }
 
-})
+});
 
 module.exports = router;
