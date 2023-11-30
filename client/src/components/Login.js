@@ -23,7 +23,7 @@ const Login = ()=>{
         })
     }
 
-    const loginuser =(e)=>{
+    const loginuser = async (e)=>{
         e.preventDefault();
         const {email, password} = inpval
         if(email === ""){
@@ -34,7 +34,23 @@ const Login = ()=>{
             alert("Atleast password length is 6 Character")
         }
         else{
-            console.log("Login Successfully")
+            const data = await fetch("http://localhost:8009/login",{
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    email, password
+                })
+            })
+
+            const res = await data.json();
+            // console.log(res)
+
+            if(res.status === 201){
+                alert("Login Successfully")
+                setInpval({...inpval, email: "", password:""})
+            }
         }
     }
 

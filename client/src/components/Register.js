@@ -59,7 +59,11 @@ const Register = ()=>{
                 })
             })
             const res = await data.json();
-            // console.log(res)
+            // console.log(res.status)
+            if(res.status === 201){
+                alert("User Register Successfully")
+                setInpval({...inpval, fname:"", email:"", password:"", cpassword:""})
+            }
         }
     }
 
