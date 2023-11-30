@@ -63,7 +63,6 @@ const Register = ()=>{
         }
     }
 
-
     return(
         <>
             <section>
