@@ -45,10 +45,10 @@ const Login = ()=>{
             })
 
             const res = await data.json();
-            // console.log(res)
+            console.log(res)
 
             if(res.status === 201){
-                alert("Login Successfully")
+                localStorage.setItem("usersdatatoken", res.result.token)
                 setInpval({...inpval, email: "", password:""})
             }
         }

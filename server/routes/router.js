@@ -1,7 +1,7 @@
 const express = require('express');
 const userdb = require('../models/userSchema')
 const router = new express.Router();
-const bcrypt = require("bcrypt")
+const bcrypt = require("bcryptjs")
 
 
 // for user register
@@ -26,7 +26,6 @@ router.post('/register', async(req, res)=>{
             });
 
             // here password hasing
-
             const storeData = await finaluser.save();
             
             // console.log(storeData)
@@ -62,13 +61,20 @@ router.post("/login", async (req,res)=>{
                 // token generate
 
                 const token = await userValid.generateAuthtoken();
-                // console.log(token)
+                console.log(token)
 
                 // cookiegenerate
 
                 res.cookie("usercookie", token,{
-                    expires: new Date(Date.now()+9000000)
-                })
+                    expires: new Date(Date.now()+9000000),
+                    httpOnly: true
+                });
+
+                const result = {
+                    userValid,
+                    token
+                }
+                res.status(201).json({status: 201, result})
             }
         }
     } catch (error) {
