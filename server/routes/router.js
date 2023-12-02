@@ -1,7 +1,8 @@
 const express = require('express');
 const userdb = require('../models/userSchema')
 const router = new express.Router();
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
+const authenticate = require("../middleware/authenticate")
 
 
 // for user register
@@ -36,8 +37,6 @@ router.post('/register', async(req, res)=>{
         console.log("Catch block Error");
     }
 });
-
-
 
 // User Login 
 
@@ -82,5 +81,13 @@ router.post("/login", async (req,res)=>{
     }
 
 });
+
+
+// user valid
+
+router.get("/validuser", authenticate, async(req, res)=>{
+    console.log("Done")
+})
+
 
 module.exports = router;
