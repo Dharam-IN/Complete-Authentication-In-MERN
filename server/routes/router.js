@@ -77,7 +77,8 @@ router.post("/login", async (req,res)=>{
             }
         }
     } catch (error) {
-        res.status(422).json(error)
+        res.status(401).json(error)
+        console.log("Catch Block")
     }
 
 });
@@ -86,7 +87,13 @@ router.post("/login", async (req,res)=>{
 // user valid
 
 router.get("/validuser", authenticate, async(req, res)=>{
-    console.log("Done")
+    // console.log("Done")
+    try {
+        const ValidUserOne = await userdb.findOne({_id:req.userId})
+        res.status(201).json({status:201,ValidUserOne})
+    } catch (error) {
+        res.status(401).json({status:401,error})
+    }
 })
 
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import './mix.css'
 
 
@@ -10,6 +10,8 @@ const Login = ()=>{
         email: "",
         password: ""
     })
+
+    const history = useNavigate();
 
     const setVal = (e)=>{
         // console.log(e.target.value)
@@ -49,6 +51,7 @@ const Login = ()=>{
 
             if(res.status === 201){
                 localStorage.setItem("usersdatatoken", res.result.token)
+                history("/dash")
                 setInpval({...inpval, email: "", password:""})
             }
         }
