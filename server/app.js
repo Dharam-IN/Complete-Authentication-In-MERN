@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
-require("./db/conn.js")
-const router = require('./routes/router')
 const cors = require("cors")
-const port = 8009;
+const router = require('./routes/router')
+require("./db/conn.js")
 require("./models/userSchema.js")
 
+const port = 8009;
 
 // app.get("/", (req, res)=>{
 //     res.status(201).json("Server Created")

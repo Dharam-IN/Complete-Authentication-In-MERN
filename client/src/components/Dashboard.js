@@ -4,8 +4,7 @@ import { LoginContext } from "./ContextProvider/Context";
 
 const Dashboard = ()=>{
 
-    const {logindata, setLoginData} = useContext(LoginContext)
-    console.log(logindata.ValidUserOne.email)
+    const {logindata, setLoginData} = useContext(LoginContext);
 
     const history = useNavigate();
 
@@ -41,7 +40,7 @@ const Dashboard = ()=>{
         <>
             <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
                 <img src="./user.png" style={{width: "200px", marginTop: 20}} alt="img" />
-                <h1>User Email: <span style={{color: "blue"}}>{logindata.ValidUserOne.email}</span></h1>
+                <h1>User Email: <span style={{color: "blue"}}>{logindata ? logindata.ValidUserOne.email : ""}</span></h1>
             </div>
         </>
     )
